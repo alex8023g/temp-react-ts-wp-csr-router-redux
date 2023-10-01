@@ -8,19 +8,23 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Page404 } from './pages/Page404';
 import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage';
+import { store } from './store/store';
+import { Provider } from 'react-redux';
 
 function AppComponent() {
   return (
     <>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/page1' element={<Page1 />} />
-          <Route path='/page2' element={<Page2 />} />
-          <Route path='*' element={<Page404 />} />
-        </Routes>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/page1' element={<Page1 />} />
+            <Route path='/page2' element={<Page2 />} />
+            <Route path='*' element={<Page404 />} />
+          </Routes>
+        </BrowserRouter>
+      </Provider>
     </>
   );
 }
